@@ -6,9 +6,6 @@ RUN mkdir -p /qdrant/storage
 # 拷贝本地数据到镜像中
 COPY ./qdrant_storage /qdrant/storage
 
-# 确保数据权限正确
-RUN chown -R qdrant:qdrant /qdrant/storage
-
 # 暴露Qdrant服务端口
 EXPOSE 6333
 
