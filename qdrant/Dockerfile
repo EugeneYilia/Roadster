@@ -1,9 +1,16 @@
-# 下载 Qdrant 二进制文件
-RUN curl -L https://github.com/qdrant/qdrant/releases/download/v1.7.4/qdrant-x86_64-unknown-linux-gnu.tar.gz \
-         -o qdrant.tar.gz && \
-    tar -xzf qdrant.tar.gz -C /usr/local/bin qdrant && \
-    rm qdrant.tar.gz
+FROM qdrant/qdrant:latest
 
-# 拷贝向量数据库到镜像中
+# 创建 Qdrant 数据目录（确保权限正确）
 RUN mkdir -p /qdrant/storage
-COPY qdrant_data/storage/ /qdrant/storage/
+
+# 拷贝本地数据到镜像中
+COPY ./qdrant_storage /qdrant/storage
+
+# 确保数据权限正确
+RUN chown -R qdrant:qdrant /qdrant/storage
+
+# 暴露Qdrant服务端口
+EXPOSE 6333
+
+# 启动 Qdrant 服务（默认镜像CMD无需重写，除非特殊需求）
+CMD ["./qdrant"]
