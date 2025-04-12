@@ -9,7 +9,7 @@ docker push 583076221/qdrant:0.1
 
 # Run
 docker pull  583076221/qdrant:0.1
-docker run -d -p 6333:6333 --name yuri-qdrant 583076221/qdrant:0.1
+docker run -d -p 6333:6333 --name yuri_qdrant 583076221/qdrant:0.1
 
 
 
