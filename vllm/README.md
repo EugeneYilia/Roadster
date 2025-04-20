@@ -11,7 +11,8 @@ docker push 583076221/vllm-qwen1.5-1.8b-chat-awq:0.1
 docker pull  583076221/vllm-qwen1.5-1.8b-chat-awq:0.1
 docker run --gpus all -d -p 8000:8000 --name yuri_vllm_qwen1.5_1.8b_awq 583076221/vllm-qwen1.5-1.8b-chat-awq:0.1
 
-
+# Log
+docker logs -f containerId
 
 # 用Docker前初始启动命令
 docker run --gpus all -d -p 8000:8000 -v "E:\your\path\to\Qwen1.5-1.8B-Chat-AWQ:/models" vllm/vllm-openai:latest --model /models --dtype auto --quantization awq --gpu-memory-utilization 0.9 --max-model-len 32768
