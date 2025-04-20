@@ -1,2 +1,4 @@
 .idea/*
 */qdrant_storage/*
+*/Qwen1.5-1.8B-Chat-AWQ/*
+*/Qwen7B-Chat-AWQ/*

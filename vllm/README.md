@@ -1,19 +1,31 @@
-docker run --runtime=nvidia --gpus all \
-  --name qwen-vllm \
-  -v /path/to/Qwen1.5-1.8B-Chat-AWQ:/models \
-  -p 8001:8000 \
-  -d vllm/vllm-openai:latest \
-  --model /models \
-  --dtype float16 \
-  --gpu-memory-utilization 0.9
+# Login
+docker login
+
+# Build
+docker build -t 583076221/vllm-qwen1.5-1.8b-chat-awq:0.1 .
+
+# Push
+docker push 583076221/vllm-qwen1.5-1.8b-chat-awq:0.1
+
+# Run
+docker pull  583076221/vllm-qwen1.5-1.8b-chat-awq:0.1
+docker run --gpus all -d -p 8000:8000 --name yuri_vllm_qwen1.5_1.8b_awq 583076221/vllm-qwen1.5-1.8b-chat-awq:0.1
 
 
-模型部署（使用 vLLM 开启 API 和流式响应）：
-docker run --gpus all --rm -it -p 8000:8000 \
--v /your/path/to/Qwen1.5-1.8B-Chat-AWQ:/models \
-vllm/vllm-openai:latest \
---model /models --dtype auto --quantization awq \
---gpu-memory-utilization 0.9 --max-model-len 32768
+
+# 用Docker前初始启动命令
+docker run --gpus all -d -p 8000:8000 -v "E:\your\path\to\Qwen1.5-1.8B-Chat-AWQ:/models" vllm/vllm-openai:latest --model /models --dtype auto --quantization awq --gpu-memory-utilization 0.9 --max-model-len 32768
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,3 +37,15 @@ vllm/vllm-openai:latest \
 --dtype float16：使用半精度浮点数，减少显存占用。
 
 --gpu-memory-utilization 0.9：设置 GPU 显存利用率为 90%
+
+
+
+
+
+最终版本
+
+docker run --gpus all -d -p 8000:8000 \
+-v /your/path/to/Qwen1.5-1.8B-Chat-AWQ:/models \
+vllm/vllm-openai:latest \
+--model /models --dtype auto --quantization awq \
+--gpu-memory-utilization 0.9 --max-model-len 32768
