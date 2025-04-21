@@ -4,4 +4,4 @@ RUN mkdir -p /app/models
 
 COPY Qwen1.5-1.8B-Chat-AWQ /app/models/Qwen1.5-1.8B-Chat-AWQ
 
-CMD ["--model", "/app/models/Qwen1.5-1.8B-Chat-AWQ", "--dtype", "auto", "--quantization", "awq", "--gpu-memory-utilization", "0.7", "--max-model-len", "512"]
+CMD ["--model", "/app/models/Qwen1.5-1.8B-Chat-AWQ", "--model-id", "Qwen1.5-1.8B-Chat-AWQ", "--dtype", "auto", "--quantization", "awq", "--gpu-memory-utilization", "0.7", "--max-model-len", "512"]
