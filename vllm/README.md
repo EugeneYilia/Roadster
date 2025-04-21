@@ -2,14 +2,14 @@
 docker login
 
 # Build
-docker build -t 583076221/vllm-qwen1.5-1.8b-chat-awq:0.5 .
+docker build -t 583076221/vllm-qwen1.5-1.8b-chat-awq:0.6 .
 
 # Push
-docker push 583076221/vllm-qwen1.5-1.8b-chat-awq:0.5
+docker push 583076221/vllm-qwen1.5-1.8b-chat-awq:0.6
 
 # Run
-docker pull  583076221/vllm-qwen1.5-1.8b-chat-awq:0.5
-docker run --gpus all -d -p 8000:8000 --name yuri_vllm_qwen1.5_1.8b_awq_0.5 583076221/vllm-qwen1.5-1.8b-chat-awq:0.5
+docker pull  583076221/vllm-qwen1.5-1.8b-chat-awq:0.6
+docker run --gpus all -d -p 8000:8000 --name yuri_vllm_qwen1.5_1.8b_awq_0.6 583076221/vllm-qwen1.5-1.8b-chat-awq:0.6
 
 # Log
 docker logs -f containerId
